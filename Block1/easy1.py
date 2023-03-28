@@ -24,5 +24,16 @@ def string_mult(test_string: str, quant: int) -> str:
     return ''.join(res_list)
 
 
-print(string_mult('TeSt', 17.9))
+if __name__ == "__main__":
+
+    # Написать простую функцию, которая на вход принимает строку ('test') и целое число (3),
+    # а возвращает строку вида 'testTESTtest' - исходную строку, умноженную на 3, в разном регистре.
+    print(string_mult('TeSt', 10))
+
+    # Записать эту функцию в произвольную переменную. Напечатать эту переменную на экран. Что вы видите?
+    another_string_mult = string_mult
+    print(another_string_mult)
+
+    # Вызвать функцию суммирования через переменную, в которую вы только что её записали.
+    print(another_string_mult("buy our kitties!", 13))
 

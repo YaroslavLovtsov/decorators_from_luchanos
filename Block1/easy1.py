@@ -23,5 +23,6 @@ def string_mult(test_string: str, quant: int) -> str:
 
     return ''.join(res_list)
 
+
 print(string_mult('TeSt', 17.9))
 

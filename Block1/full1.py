@@ -33,9 +33,8 @@ def crazy_smoker_sum(arg1, arg2, arg3, arg4, *args, **kvargs):
         if inx < 2:
             result += el
 
-    arg_keys = list(kvargs.keys())
-    if len(arg_keys) > 0:
-        result += kvargs[arg_keys[0]]
+    if 'bonus_arg' in kvargs.keys():
+        result += kvargs['bonus_arg']
 
     return result
 
@@ -66,4 +65,4 @@ if __name__ == "__main__":
     # (если они есть), переданных по ключу (если они есть).
     #    - создать кортеж со значениями и распаковать его при вызове функции с помощью *
     #    - создать словарь со значениями и распаковать его при вызове функции с помощью * и **: что наблюдаете? Почему?
-    print(crazy_smoker_sum(111, 2, 3, 40.4, 5, 66, 7777, extra_arg_1=8888, extra_arg_2=9999))
+    print(crazy_smoker_sum(111, 2, 3, 40.4, 5, 66, 7777, extra_arg_1=8888, bonus_arg=9999))

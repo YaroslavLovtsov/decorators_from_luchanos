@@ -1,5 +1,7 @@
 import hashlib
 from datetime import datetime
+import os
+from dotenv import load_dotenv
 
 
 # 1.1 Написать декоратор, который перед запуском произвольной функции с произвольным набором аргументов будет
@@ -157,6 +159,46 @@ def time_deco_log(filename):
         return wrap
 
     return time_deco_middleware
+
+
+# 6.1 Написать декоратор, который будет запрашивать у пользователя пароль при попытке функции осуществить вызов. Если
+# введён верный пароль, то функция будет выполнена и вернется результат её работы. Если нет - в консоли появляется
+# соответствующее сообщение.
+def password_simple_required_deco(func):
+    load_dotenv('.env')
+
+    def password_required_wrap(*args, **kwargs):
+        password = input('Введите пароль: ')
+        if password == os.getenv('DECO_PASSWORD_COMMON'):
+            result = func(*args, **kwargs)
+        else:
+            print("Пароль введен некорректно")
+            result = None
+
+        return result
+
+    return password_required_wrap
+
+
+# 6.2 Параметризовать декоратор таким образом, чтобы можно было задавать индивидуальный пароль для каждой декорируемой
+# функции.
+def password_required_deco(password_id):
+    def password_required_middleware(func):
+        load_dotenv('.env')
+
+        def password_required_wrap(*args, **kwargs):
+            password = input('Введите пароль: ')
+            if password == os.getenv(password_id):
+                result = func(*args, **kwargs)
+            else:
+                print("Пароль введен некорректно")
+                result = None
+
+            return result
+
+        return password_required_wrap
+
+    return password_required_middleware
 
 
 CACHE_SIMPLE = {}

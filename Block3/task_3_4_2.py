@@ -1,8 +1,8 @@
 # Задача 4 (сами декораторы в файле decorators.py)
 # 4.1 Написать декоратор, который бы измерял время работы функции и печатал бы его на экран.
 # 4.2 Доработать декоратор таким образом, чтобы в логах было название запускаемой функции помимо времени исполнения.
-from MyTreasury.PI_many_singns import SharpFloat
-from decorators import time_deco_simple, time_deco_log
+from MyTreasury.SharpFractions import SharpFloat
+from decorators import time_deco_log
 
 
 @time_deco_log("log.txt")
